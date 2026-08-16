@@ -33,3 +33,15 @@ Tanggal: 2026-08-16
 - [ ] Ukur token delta (baseline vs study) di satu platform
 - [ ] Ulangi PoC di Claude Code dan Antigravity
 - [ ] Lanjut ke Phase 1 penuh / iterate protocol / ubah granularity
+
+## Cara mengukur token delta
+
+Workspace sudah disiapkan (isi identik: hanya `TASK.md`):
+- Baseline: `%TEMP%\opencode\token-delta\baseline`
+- Study: `%TEMP%\opencode\token-delta\study`
+
+1. **Baseline** — buka `opencode` di folder baseline, pilih agent `build` (Tab), kirim: `Kerjakan TASK.md sampai selesai`. Selesai → catat session ID lalu `opencode export <sessionID>`, jumlahkan token input+output dari JSON.
+2. **Study** — buka `opencode` di folder study, pilih agent `study` (Tab), kirim pesan yang sama. Saat menu checkpoint muncul pilih **Continue terus** (tanpa pertanyaan → delta murni protocol). Selesai → export session, hitung token.
+3. **Delta** = (study − baseline) / baseline × 100%. Ekspektasi +10–15%.
+
+Catatan: hasil implementasi todo-cli dari run PoC sebelumnya tersimpan di `%TEMP%\opencode\poc-todo` (bukan baseline — jangan dipakai untuk perbandingan).
