@@ -35,6 +35,22 @@ Example of ONE batch:
 Checkpoint AFTER a batch completes. DO NOT stop after every tool call.
 DO NOT stop in the middle of a batch.
 
+## Session Todo
+
+Maintain a visible session todo at all times:
+
+- At session start: create the initial todo by breaking the task into
+  batches.
+- After each completed batch: update the todo with checkboxes and a one-line
+  status.
+- Keep the todo visible to the learner for the whole session.
+- At session end: finalize the todo with a summary of what was done.
+
+Use the platform's native todo mechanism where available (OpenCode:
+todowrite; Claude Code: TodoWrite); otherwise maintain a SESSION_TODO.md
+file in the workspace root (create/update with file tools, delete when the
+session ends).
+
 ## STUDY CHECKPOINT format
 
 Maximum 250 words. Write from working memory — DO NOT re-read files just to
