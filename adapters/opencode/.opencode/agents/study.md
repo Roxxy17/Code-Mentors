@@ -4,6 +4,7 @@ mode: primary
 permission:
   edit: allow
   bash: allow
+  question: allow
 ---
 
 # STUDY PROTOCOL (v0)
