@@ -62,9 +62,9 @@ Berisi instruksi operasional, di-embed inline ke setiap adapter:
 
 ### 3.2 Adapter
 
-- **Claude Code** (`adapters/claude/.claude/agents/study.md`): frontmatter `name`, `description`, `tools` (Read, Edit, Write, Bash, Grep, Glob, Task), `model`; isi = protocol. Menu via `AskUserQuestion`.
+- **Claude Code** (`adapters/claude/.claude/agents/study.md`): frontmatter `name`, `description`, `tools` (Read, Grep, Glob, Edit, Write, Bash, Task), `model: sonnet`; isi = protocol. Menu via `AskUserQuestion`.
 - **OpenCode** (`adapters/opencode/.opencode/agents/study.md`): frontmatter `mode: primary`, `permission` penuh (edit/bash allow); isi = protocol. Menu via `question`.
-- **Antigravity** (`adapters/antigravity/.agents/agents/study.md`): frontmatter `name`, `description`, `tools` (view_file, write_to_file, replace_file_content, multi_replace_file_content, grep_search, run_command, ask_question, define_subagent), `mainAgent: true`, `subagent: true`, `commandExecutionPolicy: auto`; isi = protocol. Menu via `ask_question`.
+- **Antigravity** (`adapters/antigravity/.agents/agents/study.md`): frontmatter `name`, `description`, `tools` (view_file, write_to_file, replace_file_content, multi_replace_file_content, grep_search, list_dir, find_by_name, run_command, ask_question), `mainAgent: true`, `subagent: true`, `model: pro`, `commandExecutionPolicy: auto`; isi = protocol. Menu via `ask_question`.
 
 ## 4. Budget Token (batasan desain)
 
