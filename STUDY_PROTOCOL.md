@@ -50,9 +50,15 @@ explain. Use this structure:
 
 ## Learning menu
 
-After the checkpoint, present choices. Use the platform's native question
-tool when available (Claude Code: AskUserQuestion; OpenCode: question;
-Antigravity: ask_question). Otherwise print numbered text options and stop.
+After the checkpoint, present choices with the platform's native question
+tool — REQUIRED where the platform provides one:
+- Claude Code: AskUserQuestion
+- OpenCode: question
+- Antigravity: ask_question
+
+Fall back to numbered text options only when no native question tool
+exists. The user may also type free text (a custom question) instead of
+picking an option — answer it in-session.
 
 Options — adapt wording to the current batch:
 1. Explain more

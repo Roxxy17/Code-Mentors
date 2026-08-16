@@ -56,7 +56,7 @@ Berisi instruksi operasional, di-embed inline ke setiap adapter:
 2. **Definisi Logical Batch** — sekelompok aksi yang menuju satu tujuan bermakna (sinyal: file yang sama, plan-step, dependency, fase). Batas batch ditentukan agent sendiri (self-report).
 3. **Aturan Checkpoint** — berhenti di akhir turn setelah batch selesai; JANGAN berhenti tiap tool call.
 4. **Format Checkpoint** — `What / Why / Architecture / Concepts / Verification`, **maksimal 250 kata**, ditulis dari working memory. DILARANG membaca ulang file hanya untuk menjelaskan.
-5. **Menu** — gunakan platform's native question tool bila ada, else teks bernomor. Opsi: explain more / why approach / walkthrough kode / konsep terkait / tanya bebas / quiz / continue. "Continue" selalu fast-path.
+5. **Menu** — WAJIB gunakan platform's native question tool bila tersedia (Claude Code `AskUserQuestion`, OpenCode `question`, Antigravity `ask_question`); fallback teks bernomor hanya bila tidak ada tool native. Opsi: explain more / why approach / walkthrough kode / konsep terkait / tanya bebas / quiz / continue. "Continue" selalu fast-path.
 6. **Aturan menjawab** — jawab dengan konteks proyek + trade-off, bukan jawaban textbook. Tidak ada arsitektur yang selalu benar.
 7. **Aturan lanjut** — "continue" = resume build penuh tanpa derail.
 
