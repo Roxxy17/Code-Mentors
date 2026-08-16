@@ -23,7 +23,8 @@ Tanggal: 2026-08-16
 ## Temuan / masalah
 - Sesi OpenCode ini sudah membawa STUDY PROTOCOL di system prompt sejak awal — agent `study` baru tersedia sebagai opsi Tab setelah instalasi; perlu sesi baru untuk menguji jalur "pilih agent via Tab".
 - Bug yang ditemukan selama PoC: `node --test test/` gagal di Node v22 (path arg dianggap module); solusi `node --test` (auto-discovery). Bukan bug produk, hanya catatan runner.
-- **Tool `question` OpenCode bersifat opt-in**: tidak muncul di daftar tool model sampai permission `question: allow` di-set eksplisit. Fix diterapkan di 3 level (agent project, global config `~/.config/opencode/opencode.json`, agent global `~/.config/opencode/agents/`) dan di-sync ke `adapters/` (commit `ce1d63e`). Konvensi global agent Antigravity (`~/.agents/agents/`) masih inferensi — belum terverifikasi ke docs resmi.
+- **Tool `question` OpenCode bersifat opt-in**: tidak muncul di daftar tool model sampai permission `question: allow` di-set eksplisit. Fix diterapkan di 3 level (agent project, global config `~/.config/opencode/opencode.json`, agent global `~/.config/opencode/agents/`) dan di-sync ke `adapters/` (commit `ce1d63e`).
+- **Global agent Antigravity**: path terdokumentasi di plan/README = `~/.gemini/config/agents/`; salinan juga sempat dibuat di `~/.agents/agents/` (inferensi dari pola skills) — disimpan sebagai fallback redundan.
 - Pengukuran token delta belum dilakukan (butuh run baseline dengan agent build biasa di platform yang sama).
 
 ## Keputusan lanjut
