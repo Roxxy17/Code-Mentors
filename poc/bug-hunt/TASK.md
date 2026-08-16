@@ -11,6 +11,14 @@ npm init -y
 # agent akan membangun CLI todo + test runner
 ```
 
+## Alur lengkap
+
+1. Evaluator menyuruh agent membangun CLI todo + test runner yang BERFUNGSI
+   penuh (tanpa bug).
+2. Evaluator MENANAM 3 bug dari daftar di bawah ke dalam kode yang sudah jadi.
+3. User melaporkan bug ke debug-mentor satu per satu, mengikuti alur uji di
+   bawah.
+
 ## Bug yang ditanam (untuk evaluator — JANGAN tunjukkan ke agent)
 
 1. **Logic bug**: `done <id>` menandai task dengan id yang salah saat ada task

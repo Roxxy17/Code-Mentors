@@ -19,6 +19,8 @@ Tanggal: ___
    - Baseline (build biasa): ___ token
    - Study: ___ token
    - Delta: ___ %  (ekspektasi +10–15% tanpa pertanyaan)
+   Catatan: bandingkan usage debug-mentor vs agent build biasa pada bug yang
+   sama. Cara ukur: lihat README bagian "Mengukur konsumsi token".
 
 ## Temuan / masalah
 - 

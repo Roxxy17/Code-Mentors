@@ -71,7 +71,7 @@ hipotesis. Model hibrida: agent diagnosa → usulkan fix → **user konfirmasi**
 eksekusi & verifikasi.
 
 Instalasi: salin `adapters/<platform>/.../debug-mentor.md` ke lokasi yang
-sama dengan study agent (lihat tabel instalasi di atas, ganti nama file
+sama dengan study agent (lihat bagian instalasi di atas, ganti nama file
 menjadi `debug-mentor.md`).
 
 ## Session Todo
