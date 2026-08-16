@@ -63,3 +63,20 @@ Catat angka di `poc/todo-cli/EVALUATION.md`. Ekspektasi: hanya continue →
 
 > Observasi eksternal (hooks/plugin) gratis — yang membebani token hanya
 > teks yang benar-benar ditulis.
+
+## Debugging Mentor (V0)
+
+Sibling dari Study Mode — membantu memahami & memperbaiki bug melalui siklus
+hipotesis. Model hibrida: agent diagnosa → usulkan fix → **user konfirmasi** →
+eksekusi & verifikasi.
+
+Instalasi: salin `adapters/<platform>/.../debug-mentor.md` ke lokasi yang
+sama dengan study agent (lihat tabel instalasi di atas, ganti nama file
+menjadi `debug-mentor.md`).
+
+## Session Todo
+
+Semua agent mentor (study & debug) memelihara todo yang terlihat:
+- OpenCode: tool native `todowrite` (permission `todowrite: allow` sudah ada di adapter).
+- Claude Code: tool native `TodoWrite` (sudah ada di `tools:`).
+- Antigravity: file `SESSION_TODO.md` di workspace root (fallback, dibuat & dihapus oleh agent).
