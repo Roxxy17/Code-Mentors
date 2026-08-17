@@ -45,3 +45,15 @@ Workspace sudah disiapkan (isi identik: hanya `TASK.md`):
 3. **Delta** = (study − baseline) / baseline × 100%. Ekspektasi +10–15%.
 
 Catatan: hasil implementasi todo-cli dari run PoC sebelumnya tersimpan di `%TEMP%\opencode\poc-todo` (bukan baseline — jangan dipakai untuk perbandingan).
+
+## Evaluasi Enforcement (Phase 1)
+
+Uji enforcement (soft reminder, token display, ambang N). Centang/isi sesuai hasil uji Task 1–3.
+
+1. **Reminder muncul setelah N tool call tanpa checkpoint?** ☐ Ya ☐ Tidak — catatan: ___
+2. **Reminder tidak memblokir alur agent?** ☐ Ya ☐ Tidak — catatan: ___
+3. **Token display muncul di checkpoint? Format `📊 tokens: ...`?** ☐ Ya ☐ Tidak — catatan: ___
+4. **Berfungsi di platform mana?** OpenCode ☐ Claude Code ☐ Antigravity ☐ (verifikasi terbatas)
+5. **Ambang N bisa dikonfigurasi (`ENFORCE_MENTOR_N`)?** ☐ Ya ☐ Tidak — catatan: ___
+
+Catatan: verifikasi Antigravity terbatas (riset, belum penuh). Default ambang N = 5 tool call tanpa checkpoint signal.
