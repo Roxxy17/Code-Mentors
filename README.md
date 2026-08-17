@@ -4,7 +4,7 @@ Multi-platform coding agents that **build, fix, and refactor while teaching**.
 Three mentor agents share one protocol core and run as plain Markdown agent
 files on OpenCode, Claude Code, and Antigravity — **no runtime, no build step**.
 
-- 🟡 **study-mode** — builds features autonomously, teaches at each checkpoint
+- 🟡 **develop-mentor** — builds features autonomously, teaches at each checkpoint
 - 🟣 **debug-mentor** — fixes bugs through structured hypothesis cycles
 - 🟢 **refactor-mentor** — refactors code safely (behavior-preserving), confirming before each change
 
@@ -12,18 +12,18 @@ files on OpenCode, Claude Code, and Antigravity — **no runtime, no build step*
 
 ```bash
 mkdir -p ~/.config/opencode/agents
-cp adapters/opencode/.opencode/agents/study-mode.md ~/.config/opencode/agents/
+cp adapters/opencode/.opencode/agents/develop-mentor.md ~/.config/opencode/agents/
 ```
 
-1. Restart opencode, press `Tab`, pick `study-mode`.
+1. Restart opencode, press `Tab`, pick `develop-mentor`.
 2. Give it a task — for example: `build a CLI todo app`.
-3. It works in logical batches, then stops at each **STUDY CHECKPOINT** to teach and present a menu.
+3. It works in logical batches, then stops at each **DEVELOP CHECKPOINT** to teach and present a menu.
 
 ## Mentors
 
 | Agent | What it does | Model | Color (OpenCode) |
 |---|---|---|---|
-| `study-mode` | Build features while teaching | do + teach | 🟡 yellow |
+| `develop-mentor` | Build features while teaching | do + teach | 🟡 yellow |
 | `debug-mentor` | Diagnose & fix bugs via hypothesis cycles | hybrid — you confirm fixes | 🟣 purple |
 | `refactor-mentor` | Safe refactoring (behavior-preserving) | hybrid — you confirm changes | 🟢 green |
 
@@ -31,7 +31,7 @@ cp adapters/opencode/.opencode/agents/study-mode.md ~/.config/opencode/agents/
 
 - **`CORE_PROTOCOL.md`** — shared mechanics for every mentor: session todo,
   learning menu, answering questions, continuing, token budget.
-- **Mentor protocols** — `STUDY_PROTOCOL.md`, `DEBUGGING_PROTOCOL.md`,
+- **Mentor protocols** — `DEVELOPING_PROTOCOL.md`, `DEBUGGING_PROTOCOL.md`,
   `REFACTORING_PROTOCOL.md` — only the mentor-specific behavior.
 - **Adapters** — one per platform per mentor. Each body is
   `mentor-specific + CORE`, fully self-contained.
