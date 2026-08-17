@@ -88,6 +88,56 @@ Run the same task with a normal build agent and with a mentor agent, then
 compare usage. Expected: continue-only → +10–15%; each free-form question
 ≈ +5,000 tokens. See `poc/` for the evaluation kit.
 
+## Phase 1 — Mentor enforcement (soft reminder)
+
+A non-destructive helper that keeps mentor agents honest about checkpointing:
+it never blocks, never gates, and never throws — it only nudges.
+
+**What it does**
+
+- Counts tool calls in each session. After `N` consecutive calls (default **5**,
+  minimum **3**) without a checkpoint signal, it injects a soft system reminder
+  to stop and present a `DEVELOP`/`DEBUG`/`REFACTOR CHECKPOINT:` (and re-issue
+  the session todo) before continuing.
+- A checkpoint signal resets the counter. A signal is a tool response containing
+  `(DEVELOP|DEBUG|REFACTOR) CHECKPOINT:` **or** a todo-tool call
+  (`todowrite`/`TodoWrite`/`updateTodo`).
+- At checkpoints and reminders it appends a token display line:
+  `📊 tokens: +X in / +Y out (session total Z)` — the delta since the last
+  checkpoint plus the cumulative session total (OpenCode uses real per-message
+  token usage; Claude Code approximates by summing the transcript's
+  `message.usage` fields).
+
+**Configuration** (environment variables)
+
+| Variable | Meaning | Default |
+|---|---|---|
+| `ENFORCE_MENTOR_N` | Tool calls before a reminder fires (clamped to ≥ 3) | `5` |
+| `ENFORCE_MENTOR_TOKENS` | `0`, `false`, `off`, `no` disables the token line | on |
+
+**Install**
+
+- **OpenCode** — no setup. The plugin at `.opencode/plugin/enforce-mentor.ts` is
+  auto-discovered when the project is opened. Copy it into another project
+  (e.g. `cp -r .opencode/plugin ./`) to enable enforcement there.
+- **Claude Code** — hooks-based. The relevant files are `.claude/settings.json`
+  (registers a `PostToolUse` hook) and `scripts/claude-enforce-hook.js` (the
+  handler). Keep both together: the hook runs on `Read|Edit|Write|Bash|TodoWrite`
+  and requires the script at `scripts/claude-enforce-hook.js`.
+- **Antigravity 2.0** — research-based implementation at
+  `.agents/plugins/enforce-mentor/` (plugin dir + `PreInvocation` hook injecting
+  an `ephemeralMessage`). **Verification is limited**: the plugin's format is
+  validated by the official CLI, but a live end-to-end run was not possible on
+  this machine (no runnable Antigravity desktop app), and the token display is
+  data-limited (no usage data in hook payloads/transcripts). See
+  [docs/antigravity-enforcement-notes.md](docs/antigravity-enforcement-notes.md)
+  for details and open concerns.
+
+> Caveat: live end-to-end verification is pending on some platforms (notably
+> Antigravity; Claude Code's hook payload also does not expose real per-tool
+> usage, so its token line is a transcript-based approximation). The reminder
+> is advisory only and safe to enable everywhere.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) — adding a new mentor is
