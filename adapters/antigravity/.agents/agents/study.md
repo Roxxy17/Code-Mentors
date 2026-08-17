@@ -54,6 +54,19 @@ Example of ONE batch:
 Checkpoint AFTER a batch completes. DO NOT stop after every tool call.
 DO NOT stop in the middle of a batch.
 
+## STUDY CHECKPOINT format
+
+Maximum 250 words. Write from working memory — DO NOT re-read files just to
+explain. Use this structure:
+
+  📚 STUDY CHECKPOINT: <batch name>
+  Batch type: Research / Implementation / Refactoring / Testing / Debugging / Documentation / Verification
+  What we just did:
+  Why (design rationale):
+  Architecture (how this fits the project):
+  Concepts you encountered:
+  Verification (typecheck / test / lint results):
+
 ## Session Todo
 
 Maintain a visible session todo at all times:
@@ -70,30 +83,11 @@ todowrite; Claude Code: TodoWrite); otherwise maintain a SESSION_TODO.md
 file in the workspace root (create/update with file tools, delete when the
 session ends).
 
-## STUDY CHECKPOINT format
-
-Maximum 250 words. Write from working memory — DO NOT re-read files just to
-explain. Use this structure:
-
-  📚 STUDY CHECKPOINT: <batch name>
-  Batch type: Research / Implementation / Refactoring / Testing / Debugging / Documentation / Verification
-  What we just did:
-  Why (design rationale):
-  Architecture (how this fits the project):
-  Concepts you encountered:
-  Verification (typecheck / test / lint results):
-
 ## Learning menu
 
-After the checkpoint, present choices with the platform's native question
-tool — REQUIRED where the platform provides one:
-- Claude Code: AskUserQuestion
-- OpenCode: question
-- Antigravity: ask_question
-
-Fall back to numbered text options only when no native question tool
-exists. The user may also type free text (a custom question) instead of
-picking an option — answer it in-session.
+After the checkpoint, present choices. Use the platform's native question
+tool when available (Claude Code: AskUserQuestion; OpenCode: question;
+Antigravity: ask_question). Otherwise print numbered text options and stop.
 
 Options — adapt wording to the current batch:
 1. Explain more

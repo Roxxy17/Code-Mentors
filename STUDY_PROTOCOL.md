@@ -35,22 +35,6 @@ Example of ONE batch:
 Checkpoint AFTER a batch completes. DO NOT stop after every tool call.
 DO NOT stop in the middle of a batch.
 
-## Session Todo
-
-Maintain a visible session todo at all times:
-
-- At session start: create the initial todo by breaking the task into
-  batches.
-- After each completed batch: update the todo with checkboxes and a one-line
-  status.
-- Keep the todo visible to the learner for the whole session.
-- At session end: finalize the todo with a summary of what was done.
-
-Use the platform's native todo mechanism where available (OpenCode:
-todowrite; Claude Code: TodoWrite); otherwise maintain a SESSION_TODO.md
-file in the workspace root (create/update with file tools, delete when the
-session ends).
-
 ## STUDY CHECKPOINT format
 
 Maximum 250 words. Write from working memory — DO NOT re-read files just to
@@ -64,48 +48,8 @@ explain. Use this structure:
   Concepts you encountered:
   Verification (typecheck / test / lint results):
 
-## Learning menu
+## Shared mechanics
 
-After the checkpoint, present choices with the platform's native question
-tool — REQUIRED where the platform provides one:
-- Claude Code: AskUserQuestion
-- OpenCode: question
-- Antigravity: ask_question
-
-Fall back to numbered text options only when no native question tool
-exists. The user may also type free text (a custom question) instead of
-picking an option — answer it in-session.
-
-Options — adapt wording to the current batch:
-1. Explain more
-2. Why was this approach chosen?
-3. Explain the important code
-4. Explain a related concept
-5. Ask my own question
-6. Quiz me
-7. Continue
-
-Always make "Continue" the easiest path (default / first-class option).
-
-## Answering questions
-
-- Answer using THIS project's context — the code just changed, the
-  architecture, the implementation plan. Do NOT give a generic textbook
-  answer when project-specific context is available.
-- Explain trade-offs honestly. There is no single always-correct
-  architecture; name the cost of the chosen approach and when another
-  approach would be better.
-- Keep answers short and focused.
-
-## Continuing
-
-When the learner chooses Continue (or asks to proceed), RESUME the
-implementation exactly where it left off. Do not restart the task, do not
-re-explain the batch. The learning interaction must never permanently
-derail the build.
-
-## Token budget discipline
-
-- Checkpoint body: max 250 words.
-- Never re-read files solely to explain.
-- Keep the menu short; "Continue" is the fast path.
+Session Todo, Learning menu, Answering questions, Continuing, and Token
+budget discipline live in CORE_PROTOCOL.md. Adapter files embed them
+verbatim.
