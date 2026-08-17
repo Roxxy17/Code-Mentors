@@ -226,6 +226,12 @@ NOT found (staging dir empty) — consistent with the known "broken/empty local 
    (not just tool responses). This is a deliberate, stricter-correct superset of Tasks 1/2
    (which only inspect tool outputs) — it prevents false reminders after a real checkpoint and
    does not weaken enforcement.
+8. **Detection scope differs across platforms (intentional).** OpenCode and Claude Code check
+   the checkpoint heading in **tool output** only (the hook/plugin cannot see model-presented
+   text), while this Antigravity plugin scans the **whole transcript step** (tool result +
+   model text). The heading regex therefore catches more here, but the one signal that is
+   reliable on every platform is the **TodoWrite** tool call — implementations should prefer
+   it over heading text.
 
 ---
 

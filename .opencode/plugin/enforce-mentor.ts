@@ -50,9 +50,13 @@ function isCheckpointSignal(tool: string, outputText: string): boolean {
   return CHECKPOINT_RE.test(outputText)
 }
 
-function appendLine(output: { output: string }, line: string): void {
-  if (typeof output.output !== "string") output.output = line
-  else output.output = output.output.length > 0 ? `${output.output}\n${line}` : line
+function appendLine(output: { output: unknown }, line: string): void {
+  if (typeof output.output !== "string") {
+    const original = output.output == null ? "" : JSON.stringify(output.output)
+    output.output = original.length > 0 ? `${original}\n${line}` : line
+  } else {
+    output.output = output.output.length > 0 ? `${output.output}\n${line}` : line
+  }
 }
 
 function tokenLine(state: SessionState): string | null {

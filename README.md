@@ -102,6 +102,11 @@ it never blocks, never gates, and never throws — it only nudges.
 - A checkpoint signal resets the counter. A signal is a tool response containing
   `(DEVELOP|DEBUG|REFACTOR) CHECKPOINT:` **or** a todo-tool call
   (`todowrite`/`TodoWrite`/`updateTodo`).
+- **Signal detection scope** — OpenCode and Claude Code check **tool output** for
+  the checkpoint heading (they cannot see the model's presented text), while
+  Antigravity scans the **whole transcript step** (tool result + model text).
+  This is a documented intentional difference; the reliable cross-platform
+  signal is the **TodoWrite** call, so prefer it over heading text.
 - At checkpoints and reminders it appends a token display line:
   `📊 tokens: +X in / +Y out (session total Z)` — the delta since the last
   checkpoint plus the cumulative session total (OpenCode uses real per-message
@@ -119,7 +124,7 @@ it never blocks, never gates, and never throws — it only nudges.
 
 - **OpenCode** — no setup. The plugin at `.opencode/plugin/enforce-mentor.ts` is
   auto-discovered when the project is opened. Copy it into another project
-  (e.g. `cp -r .opencode/plugin ./`) to enable enforcement there.
+  (e.g. `cp -r .opencode ./`) to enable enforcement there.
 - **Claude Code** — hooks-based. The relevant files are `.claude/settings.json`
   (registers a `PostToolUse` hook) and `scripts/claude-enforce-hook.js` (the
   handler). Keep both together: the hook runs on `Read|Edit|Write|Bash|TodoWrite`
@@ -137,6 +142,11 @@ it never blocks, never gates, and never throws — it only nudges.
 > Antigravity; Claude Code's hook payload also does not expose real per-tool
 > usage, so its token line is a transcript-based approximation). The reminder
 > is advisory only and safe to enable everywhere.
+>
+> **Acceptance gate:** a live end-to-end session run is the acceptance gate for
+> Phase 1 (EVALUATION items 1–3 in `poc/todo-cli/EVALUATION.md` — reminder fires
+> after N calls, does not block the flow, token display at checkpoints). It is
+> still pending a real session run.
 
 ## Contributing
 

@@ -29,7 +29,10 @@ const N = Number.isFinite(RAW_N) ? Math.max(3, Math.floor(RAW_N)) : 5;
 const STATE_FILE = path.join(os.tmpdir(), "claude-enforce-mentor-state.json");
 const TOKENS_DISABLED = /^(0|false|off|no)$/i.test(process.env.ENFORCE_MENTOR_TOKENS || "");
 const MAX_SESSIONS = 200;
-const REMINDER = "System reminder: you appear to have completed a logical batch. Per the protocol, present a <MENTOR> CHECKPOINT and re-issue the session todo before continuing.";
+
+function reminderText(calls) {
+  return `System reminder: you appear to have completed a logical batch (${calls} tool calls without a checkpoint). Per the protocol, STOP and present a 📚 DEVELOP/DEBUG/REFACTOR CHECKPOINT: <batch name>, then re-issue the session todo before continuing.`;
+}
 
 function readState() {
   try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf8")); } catch { return {}; }
@@ -74,6 +77,7 @@ function readTranscriptTotals(transcriptPath) {
     try { obj = JSON.parse(line); } catch { continue; }
     const usage = obj && obj.message && obj.message.usage;
     if (!usage) continue;
+    if (obj.message.role !== "assistant") continue;
     totalIn += usage.input_tokens || 0;
     totalOut += usage.output_tokens || 0;
     found = true;
@@ -94,7 +98,7 @@ let input = "";
 process.stdin.on("data", (d) => (input += d));
 process.stdin.on("end", () => {
   let payload = {};
-  try { payload = JSON.parse(input); } catch { process.exit(0); }
+  try { payload = JSON.parse(input); } catch { process.exitCode = 0; return; }
 
   const toolName = String(payload.tool_name || "");
   const responseText = (() => {
@@ -117,8 +121,9 @@ process.stdin.on("end", () => {
   } else {
     session.calls = (session.calls || 0) + 1;
     if (session.calls >= N) {
+      const calls = session.calls;
       session.calls = 0;
-      let parts = [REMINDER];
+      let parts = [reminderText(calls)];
       if (!TOKENS_DISABLED) {
         const line = tokenLine(readTranscriptTotals(payload.transcript_path), session);
         if (line) parts.push(line);
@@ -138,5 +143,5 @@ process.stdin.on("end", () => {
       }
     }));
   }
-  process.exit(0);
+  process.exitCode = 0;
 });
