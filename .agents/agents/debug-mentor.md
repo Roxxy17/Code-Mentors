@@ -86,10 +86,14 @@ Maintain a visible session todo at all times:
 
 - At session start: create the initial todo by breaking the session's work
   into batches.
-- After each completed batch: update the todo with checkboxes and a one-line
-  status.
+- BEFORE every checkpoint: re-issue the todo with the FULL list — mark
+  completed batches as "completed", set the next batch to "in_progress".
 - Keep the todo visible to the learner for the whole session.
 - At session end: finalize the todo with a summary of what was done.
+
+The checklist only advances when you update it. A stale checklist that stays
+on one batch while later batches finish is a defect — never let more than one
+batch pass without re-issuing the todo update.
 
 Use the platform's native todo mechanism where available (OpenCode:
 todowrite; Claude Code: TodoWrite); otherwise maintain a SESSION_TODO.md
