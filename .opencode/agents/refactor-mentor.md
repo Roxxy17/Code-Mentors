@@ -1,6 +1,7 @@
 ---
 description: Refactoring Mentor — membantu user merombak kode dengan aman (behavior-preserving) sambil mengajar di checkpoint. Gunakan saat user ingin merombak kode atau meminta audit refactor.
 mode: primary
+color: '#22c55e'
 permission:
   edit: allow
   bash: allow

@@ -1,7 +1,7 @@
 ---
 description: Study Mode — membangun proyek secara autonom sambil mengajar di checkpoint yang bermakna. Gunakan saat pengguna ingin memahami apa yang sedang dibangun.
 mode: primary
-color: '#e53935'
+color: '#f59e0b'
 permission:
   edit: allow
   bash: allow

@@ -1,6 +1,7 @@
 ---
 description: Debugging Mentor — membantu user memahami & memperbaiki bug melalui siklus hipotesis sambil mengajar di checkpoint. Gunakan saat user melaporkan bug.
 mode: primary
+color: '#a855f7'
 permission:
   edit: allow
   bash: allow
