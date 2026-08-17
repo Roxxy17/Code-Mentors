@@ -1,0 +1,11 @@
+{
+  "enforce-mentor": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node .agents/plugins/enforce-mentor/enforce-mentor.js",
+        "timeout": 30
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "enforce-mentor",
+  "description": "Soft checkpoint reminder + best-effort token display for the code-mentor agents (DEVELOP/DEBUG/REFACTOR CHECKPOINT discipline). Injects an ephemeral PreInvocation reminder after N tool calls without a checkpoint signal."
+}
