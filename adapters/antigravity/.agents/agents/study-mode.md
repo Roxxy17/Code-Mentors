@@ -1,5 +1,5 @@
 ---
-name: study
+name: study-mode
 description: Study Mode — membangun proyek secara autonom sambil mengajar di checkpoint yang bermakna. Gunakan saat pengguna ingin memahami apa yang sedang dibangun.
 tools:
   - view_file

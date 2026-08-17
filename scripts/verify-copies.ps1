@@ -32,10 +32,10 @@ if ($coreIdx -lt 0) {
 }
 
 $pairs = @{
-  'study' = @(
-    @('.opencode/agents/study.md', 'adapters/opencode/.opencode/agents/study.md'),
-    @('.claude/agents/study.md', 'adapters/claude/.claude/agents/study.md'),
-    @('.agents/agents/study.md', 'adapters/antigravity/.agents/agents/study.md')
+  'study-mode' = @(
+    @('.opencode/agents/study-mode.md', 'adapters/opencode/.opencode/agents/study-mode.md'),
+    @('.claude/agents/study-mode.md', 'adapters/claude/.claude/agents/study-mode.md'),
+    @('.agents/agents/study-mode.md', 'adapters/antigravity/.agents/agents/study-mode.md')
   )
   'debug-mentor' = @(
     @('.opencode/agents/debug-mentor.md', 'adapters/opencode/.opencode/agents/debug-mentor.md'),
@@ -50,7 +50,7 @@ $pairs = @{
 }
 
 $checkpoint = @{
-  'study' = '## STUDY CHECKPOINT format'
+  'study-mode' = '## STUDY CHECKPOINT format'
   'debug-mentor' = '## DEBUG CHECKPOINT format'
   'refactor-mentor' = '## REFACTOR CHECKPOINT format'
 }

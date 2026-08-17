@@ -19,44 +19,44 @@ checkpoint yang bermakna**. Berbasis satu protocol + adapter per platform.
 ```bash
 # Global
 mkdir -p ~/.claude/agents
-cp adapters/claude/.claude/agents/study.md ~/.claude/agents/study.md
+cp adapters/claude/.claude/agents/study-mode.md ~/.claude/agents/study-mode.md
 # atau per proyek
 cp -r adapters/claude/.claude ./
 ```
 
-Pemakaian: buka `claude`, pilih agent `study`, beri task.
+Pemakaian: buka `claude`, pilih agent `study-mode`, beri task.
 
 ### OpenCode
 
 ```bash
 # Global
 mkdir -p ~/.config/opencode/agents
-cp adapters/opencode/.opencode/agents/study.md ~/.config/opencode/agents/study.md
+cp adapters/opencode/.opencode/agents/study-mode.md ~/.config/opencode/agents/study-mode.md
 # atau per proyek
 cp -r adapters/opencode/.opencode ./
 ```
 
-Pemakaian: buka `opencode`, tekan `Tab` untuk pilih agent `study`.
+Pemakaian: buka `opencode`, tekan `Tab` untuk pilih agent `study-mode`.
 
 ### Antigravity 2.0
 
 ```bash
 # Global
 mkdir -p ~/.gemini/config/agents
-cp adapters/antigravity/.agents/agents/study.md ~/.gemini/config/agents/study.md
+cp adapters/antigravity/.agents/agents/study-mode.md ~/.gemini/config/agents/study-mode.md
 # atau per proyek
 mkdir -p .agents/agents
-cp adapters/antigravity/.agents/agents/study.md .agents/agents/study.md
+cp adapters/antigravity/.agents/agents/study-mode.md .agents/agents/study-mode.md
 ```
 
-Pemakaian: buka Antigravity, pilih agent `study` (mainAgent), beri task.
+Pemakaian: buka Antigravity, pilih agent `study-mode` (mainAgent), beri task.
 
 ## Mengukur konsumsi token
 
 Bandingkan dua run pada task yang sama:
 
 1. **Baseline**: jalankan task dengan agent build biasa, catat usage.
-2. **Study**: jalankan task yang sama dengan agent `study`, catat usage.
+2. **Study**: jalankan task yang sama dengan agent `study-mode`, catat usage.
 
 Catat angka di `poc/todo-cli/EVALUATION.md`. Ekspektasi: hanya continue →
 +10–15%; tiap pertanyaan bebas ≈ +5.000 token.
@@ -76,7 +76,7 @@ menjadi `debug-mentor.md`).
 
 ## Session Todo
 
-Semua agent mentor (study, debug, refactoring) memelihara todo yang terlihat:
+Semua agent mentor (study-mode, debug, refactoring) memelihara todo yang terlihat:
 - OpenCode: tool native `todowrite` (permission `todowrite: allow` sudah ada di adapter).
 - Claude Code: tool native `TodoWrite` (sudah ada di `tools:`).
 - Antigravity: file `SESSION_TODO.md` di workspace root (fallback, dibuat & dihapus oleh agent).
