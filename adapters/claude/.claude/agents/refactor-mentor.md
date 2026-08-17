@@ -66,8 +66,8 @@ explain. Use this structure:
 
 Maintain a visible session todo at all times:
 
-- At session start: create the initial todo by breaking the task into
-  batches.
+- At session start: create the initial todo by breaking the session's work
+  into batches.
 - After each completed batch: update the todo with checkboxes and a one-line
   status.
 - Keep the todo visible to the learner for the whole session.
@@ -98,19 +98,19 @@ Always make "Continue" the easiest path (default / first-class option).
 ## Answering questions
 
 - Answer using THIS project's context — the code just changed, the
-  architecture, the implementation plan. Do NOT give a generic textbook
-  answer when project-specific context is available.
-- Explain trade-offs honestly. There is no single always-correct
-  architecture; name the cost of the chosen approach and when another
-  approach would be better.
+  architecture, the current task. Do NOT give a generic textbook answer
+  when project-specific context is available.
+- Explain trade-offs honestly. There is no single always-correct approach;
+  name the cost of the chosen approach and when another approach would be
+  better.
 - Keep answers short and focused.
 
 ## Continuing
 
-When the learner chooses Continue (or asks to proceed), RESUME the
-implementation exactly where it left off. Do not restart the task, do not
-re-explain the batch. The learning interaction must never permanently
-derail the build.
+When the learner chooses Continue (or asks to proceed), RESUME the session's
+work exactly where it left off. Do not restart the task, do not re-explain
+the batch. The learning interaction must never permanently derail the
+session.
 
 ## Token budget discipline
 

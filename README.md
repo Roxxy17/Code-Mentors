@@ -76,7 +76,7 @@ menjadi `debug-mentor.md`).
 
 ## Session Todo
 
-Semua agent mentor (study & debug) memelihara todo yang terlihat:
+Semua agent mentor (study, debug, refactoring) memelihara todo yang terlihat:
 - OpenCode: tool native `todowrite` (permission `todowrite: allow` sudah ada di adapter).
 - Claude Code: tool native `TodoWrite` (sudah ada di `tools:`).
 - Antigravity: file `SESSION_TODO.md` di workspace root (fallback, dibuat & dihapus oleh agent).

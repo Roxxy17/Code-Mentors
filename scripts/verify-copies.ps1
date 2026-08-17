@@ -18,8 +18,18 @@ $ErrorActionPreference = 'Stop'
 
 $repo = Split-Path -Parent $PSScriptRoot
 $marker = '## Session Todo'
+
+$failures = 0
+
 $core = Get-Content -LiteralPath (Join-Path $repo 'CORE_PROTOCOL.md') -Raw
-$coreBlock = $core.Substring($core.IndexOf($marker))
+$coreIdx = $core.IndexOf($marker)
+if ($coreIdx -lt 0) {
+  $failures++
+  Write-Output "MISMATCH CORE_PROTOCOL.md missing marker '$marker'"
+  $coreBlock = ''
+} else {
+  $coreBlock = $core.Substring($coreIdx)
+}
 
 $pairs = @{
   'study' = @(
@@ -50,8 +60,6 @@ function Get-Normalized {
   $text = Get-Content -LiteralPath $Path -Raw
   return $text -replace "`r`n", "`n"
 }
-
-$failures = 0
 
 function Test-Identical {
   param([string]$a, [string]$b)
