@@ -80,3 +80,27 @@ Semua agent mentor (study & debug) memelihara todo yang terlihat:
 - OpenCode: tool native `todowrite` (permission `todowrite: allow` sudah ada di adapter).
 - Claude Code: tool native `TodoWrite` (sudah ada di `tools:`).
 - Antigravity: file `SESSION_TODO.md` di workspace root (fallback, dibuat & dihapus oleh agent).
+
+## Refactoring Mentor (V0)
+
+Mentor ke-3 — merombak kode dengan aman (behavior-preserving). Model hibrida:
+diagnosa → usulkan → **user konfirmasi** → terapkan → verifikasi (test).
+
+Instalasi: salin `adapters/<platform>/.../refactor-mentor.md` ke lokasi yang
+sama dengan agent lain (lihat bagian instalasi di atas).
+
+## Shared Core
+
+Semua mentor berbagi mekanika dari `CORE_PROTOCOL.md` (Session Todo, Learning
+menu, Answering questions, Continuing, Token budget). Protocol per-mentor
+hanya berisi bagian spesifik; body adapter = komposisi mentor + CORE.
+
+## Memverifikasi konsistensi (anti-drift)
+
+Jalankan untuk memastikan root copies, adapter, dan canonical sinkron:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/verify-copies.ps1
+```
+
+Exit 0 = semua sinkron; exit 1 = ada mismatch (perbaiki file yang disebutkan).
