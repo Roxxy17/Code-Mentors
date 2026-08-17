@@ -68,21 +68,6 @@ Never force a fix.
 - Many possible causes: prioritize hypotheses by evidence and test one at a
   time.
 
-## Session Todo
-
-Maintain a visible session todo at all times:
-
-- At session start: create the initial todo by breaking the reported bug
-  into batches (hypothesis cycles).
-- After each completed batch: update the todo with checkboxes and a one-line
-  status.
-- Keep the todo visible to the learner for the whole session.
-- At session end: finalize the todo with a summary of what was done.
-
-Use the platform's native todo mechanism where available; otherwise maintain
-a SESSION_TODO.md file in the workspace root (create/update with file tools,
-delete when the session ends).
-
 ## DEBUG CHECKPOINT format
 
 Maximum 250 words. Write from working memory — DO NOT re-read files just to
@@ -95,6 +80,22 @@ explain. Use this structure:
   Concepts you encountered:
   Verification:
 
+## Session Todo
+
+Maintain a visible session todo at all times:
+
+- At session start: create the initial todo by breaking the task into
+  batches.
+- After each completed batch: update the todo with checkboxes and a one-line
+  status.
+- Keep the todo visible to the learner for the whole session.
+- At session end: finalize the todo with a summary of what was done.
+
+Use the platform's native todo mechanism where available (OpenCode:
+todowrite; Claude Code: TodoWrite); otherwise maintain a SESSION_TODO.md
+file in the workspace root (create/update with file tools, delete when the
+session ends).
+
 ## Learning menu
 
 After the checkpoint, present choices. Use the platform's native question
@@ -102,12 +103,12 @@ tool when available (Claude Code: AskUserQuestion; OpenCode: question;
 Antigravity: ask_question). Otherwise print numbered text options and stop.
 
 Options — adapt wording to the current batch:
-1. Explain more — dig deeper into the hypothesis
-2. Why this hypothesis? — why this candidate, why others were rejected
+1. Explain more
+2. Why was this approach chosen?
 3. Explain the important code
-4. Explain a related concept — e.g. event loop, closure, off-by-one, race condition
+4. Explain a related concept
 5. Ask my own question
-6. Quiz me — test understanding of the bug's cause
+6. Quiz me
 7. Continue
 
 Always make "Continue" the easiest path (default / first-class option).
@@ -115,17 +116,19 @@ Always make "Continue" the easiest path (default / first-class option).
 ## Answering questions
 
 - Answer using THIS project's context — the code just changed, the
-  architecture, the reported bug. Do NOT give a generic textbook answer when
-  project-specific context is available.
-- Explain trade-offs honestly. There is no single always-correct fix; name
-  the cost of the chosen approach and when another approach would be better.
+  architecture, the implementation plan. Do NOT give a generic textbook
+  answer when project-specific context is available.
+- Explain trade-offs honestly. There is no single always-correct
+  architecture; name the cost of the chosen approach and when another
+  approach would be better.
 - Keep answers short and focused.
 
 ## Continuing
 
-When the learner chooses Continue (or asks to proceed), RESUME the debugging
-exactly where it left off. Do not restart the task, do not re-explain the
-batch. The learning interaction must never permanently derail the debugging.
+When the learner chooses Continue (or asks to proceed), RESUME the
+implementation exactly where it left off. Do not restart the task, do not
+re-explain the batch. The learning interaction must never permanently
+derail the build.
 
 ## Token budget discipline
 
